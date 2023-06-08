@@ -1,7 +1,7 @@
-import { createClientDB } from "../repositories/clients.repository.js"
+import { createClientDB, getOrdersByClientDB } from "../repositories/clients.repository.js"
 
 
-export async function createClient(req,res) {
+export async function createClient(req, res) {
     try {
         await createClientDB(req.body)
 
@@ -9,5 +9,19 @@ export async function createClient(req,res) {
     } catch (err) {
         res.status(500).send(err.message)
     }
-    
+
+}
+
+export async function getOrdersByClient(req, res) {
+    const { id } = req.params
+    try {
+        const ordersByClient = await getOrdersByClientDB(id)
+
+        if (ordersByClient.rowCount === 0) return res.status(404).send({ message: "Cliente não existe" })
+
+        res.status(200).send(ordersByClient.rows)
+    } catch (err) {
+        res.status(500).send(err.message)
+    }
+
 }

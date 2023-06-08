@@ -7,7 +7,7 @@ export async function validateCake(req, res, next) {
     try {
         const cake = await searchCakeDB(name)
 
-        if (cake.rowCount > 0) return res.status(409).send({ message: "Esse nome já existe" })
+        if (cake.rowCount > 0) return res.status(409).send({ message: "Esse bolo já existe" })
         next()
     } catch (err) {
         res.sendStatus(500)
