@@ -28,7 +28,7 @@ CREATE TABLE public.cakes (
     id integer NOT NULL,
     name character varying(100),
     price numeric,
-    image character varying(100),
+    image character varying,
     description text
 );
 
@@ -60,7 +60,7 @@ ALTER SEQUENCE public.cakes_id_seq OWNED BY public.cakes.id;
 CREATE TABLE public.clients (
     id integer NOT NULL,
     name character varying(100),
-    address character varying(100),
+    address character varying,
     phone character varying(11)
 );
 

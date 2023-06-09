@@ -17,7 +17,7 @@ export async function getOrdersByClient(req, res) {
     try {
         const ordersByClient = await getOrdersByClientDB(id)
 
-        if (ordersByClient.rowCount === 0) return res.status(404).send({ message: "Cliente não existe" })
+        if (ordersByClient.rowCount === 0) return res.status(404).send({ message: "Não existem pedidos para esse cliente" })
 
         res.status(200).send(ordersByClient.rows)
     } catch (err) {

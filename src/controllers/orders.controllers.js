@@ -12,8 +12,6 @@ export async function createOrder(req, res) {
 
 export async function getOrder(req, res) {
 
-    const { date } = req.query
-
     try {
         const data = await getOrderDB()
 
@@ -45,9 +43,7 @@ export async function getOrder(req, res) {
             return orderResponse
         })
 
-        let resultFilter = result.filter(r => r.orderId !== date)
-
-        res.status(200).send(resultFilter)
+        res.status(200).send(result)
     } catch (err) {
         res.status(500).send(err.message)
     }
