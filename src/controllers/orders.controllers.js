@@ -15,7 +15,7 @@ export async function getOrder(req, res) {
     const { date } = req.query
 
     try {
-        const data = await getOrderDB(date)
+        const data = await getOrderDB()
 
         if (data.length === 0) return res.status(404).send({ message: "Não há pedidos" })
 
@@ -45,7 +45,9 @@ export async function getOrder(req, res) {
             return orderResponse
         })
 
-        res.status(200).send(result)
+        let resultFilter = result.filter(r => r.orderId !== date)
+
+        res.status(200).send(resultFilter)
     } catch (err) {
         res.status(500).send(err.message)
     }

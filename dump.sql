@@ -94,7 +94,7 @@ CREATE TABLE public.orders (
     "clientId" integer,
     "cakeId" integer,
     quantity integer,
-    "createAd" timestamp without time zone DEFAULT now(),
+    "createdAt" timestamp without time zone DEFAULT now(),
     "totalPrice" numeric
 );
 

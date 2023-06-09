@@ -21,7 +21,7 @@ export async function createOrderDB(body) {
     return order
 }
 
-export async function getOrderDB(date) {
+export async function getOrderDB() {
 
     const order = await db.query(`SELECT clients.id AS "idClient", clients.name AS "nameClient",
         clients.address, clients.phone, cakes.id AS "idCake", cakes.name AS "nameCake", cakes.price,
@@ -31,7 +31,7 @@ export async function getOrderDB(date) {
         JOIN clients 
             ON orders."clientId" = clients.id
         JOIN cakes 
-            ON orders."cakeId" = cakes.id`)
+            ON orders."cakeId" = cakes.id;`)
 
     return order.rows
 }
